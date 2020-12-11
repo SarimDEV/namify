@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useState } from "react";
 import NameInputForm from "./components/NameInputForm";
 import Card from "./components/Card";
 import axios from "axios";
@@ -17,11 +17,9 @@ const App: React.FC = () => {
     name: "",
   });
   const [isLoaded, setIsLoaded] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
 
   const getData = async (name: string) => {
-    setIsLoading(true);
     setError("");
     if (name === "") {
       setError("No name provided");
@@ -36,7 +34,6 @@ const App: React.FC = () => {
       setError("Unable to fetch name information");
       setIsLoaded(false);
     }
-    setIsLoading(false);
   };
 
   const renderHeader = () => (
